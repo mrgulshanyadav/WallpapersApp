@@ -1,0 +1,19 @@
+<!--
+This project is developed by Gulshan Yadav and is copyrighted to use without permission.
+ -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/action_share"
+        android:orderInCategory="100"
+        android:title="Share"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_rateus"
+        android:orderInCategory="100"
+        android:title="Rate Us"
+        app:showAsAction="never" />
+</menu>
