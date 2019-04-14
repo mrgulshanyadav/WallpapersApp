@@ -67,6 +67,132 @@ public class MainActivity extends AppCompatActivity {
         s.setImage(R.drawable.img4);
         spacecrafts.add(s);
 
+        s=new Spacecraft();
+        s.setId("5");
+        s.setImage(R.drawable.img5);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("6");
+        s.setImage(R.drawable.img6);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("7");
+        s.setImage(R.drawable.img7);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("8");
+        s.setImage(R.drawable.img8);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("9");
+        s.setImage(R.drawable.img9);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("10");
+        s.setImage(R.drawable.img10);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("11");
+        s.setImage(R.drawable.img11);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("12");
+        s.setImage(R.drawable.img12);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("13");
+        s.setImage(R.drawable.img13);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("14");
+        s.setImage(R.drawable.img14);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("15");
+        s.setImage(R.drawable.img15);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("16");
+        s.setImage(R.drawable.img16);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("17");
+        s.setImage(R.drawable.img17);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("18");
+        s.setImage(R.drawable.img18);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("19");
+        s.setImage(R.drawable.img19);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("20");
+        s.setImage(R.drawable.img20);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("21");
+        s.setImage(R.drawable.img21);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("22");
+        s.setImage(R.drawable.img22);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("23");
+        s.setImage(R.drawable.img23);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("24");
+        s.setImage(R.drawable.img24);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("25");
+        s.setImage(R.drawable.img25);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("26");
+        s.setImage(R.drawable.img26);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("27");
+        s.setImage(R.drawable.img27);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("28");
+        s.setImage(R.drawable.img28);
+        spacecrafts.add(s);
+
+        s=new Spacecraft();
+        s.setId("29");
+        s.setImage(R.drawable.img29);
+        spacecrafts.add(s);
+
+
         return spacecrafts;
     }
 
