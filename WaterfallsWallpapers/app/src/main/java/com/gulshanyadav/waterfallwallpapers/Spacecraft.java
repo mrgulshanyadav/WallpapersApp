@@ -8,25 +8,28 @@ import android.graphics.Bitmap;
 
 public class Spacecraft {
     int image;
-    String name,propellant,id;
+    String id;
     Bitmap bmp;
     byte[] imagebyte;
-    String pagename;
+
+    public Spacecraft() {
+    }
+
+    public Spacecraft(String id, int image) {
+        this.image = image;
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
 
     public int getImage() {
         return image;
     }
+
     public void setImage(int image) {
         this.image = image;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getId() {
-        return id;
     }
     public void setId(String id) {
         this.id = id;
@@ -40,22 +43,7 @@ public class Spacecraft {
     }
 
 
-    public String getPropellant() {
-        return propellant;
-    }
-    public void setPropellant(String propellant) {
-        this.propellant = propellant;
-    }
-
     public byte[] getImageByte(){return imagebyte;}
     public void setImageByte(byte[] imagebyte){this.imagebyte = imagebyte;}
-
-    public String getPageName() {
-        return pagename;
-    }
-    public void setPageName(String pagename) {
-        this.pagename = pagename;
-    }
-
 
 }
