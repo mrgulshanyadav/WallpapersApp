@@ -1,16 +1,18 @@
 package com.gulshanyadav.waterfallwallpapers;
 
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.GridView;
+import android.view.WindowManager;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -21,6 +23,9 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     AdView adView;
     ArrayList<Spacecraft> spacecrafts;
+    RecyclerViewAdapter myAdapter;
+    ArrayList<Integer> imageLoaction;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,44 +40,105 @@ public class MainActivity extends AppCompatActivity {
         //getSupportActionBar().setTitle(Html.fromHtml("<font color='#000000'>Waterfall Wallpapers</font>"));
 
         spacecrafts = new ArrayList<>();
+        imageLoaction = new ArrayList<>();
 
-        spacecrafts.add(new Spacecraft("0",R.drawable.img0));
-        spacecrafts.add(new Spacecraft("1",R.drawable.img1));
-        spacecrafts.add(new Spacecraft("2",R.drawable.img2));
-        spacecrafts.add(new Spacecraft("3",R.drawable.img3));
-        spacecrafts.add(new Spacecraft("4",R.drawable.img4));
-        spacecrafts.add(new Spacecraft("5",R.drawable.img5));
-        spacecrafts.add(new Spacecraft("6",R.drawable.img6));
-        spacecrafts.add(new Spacecraft("7",R.drawable.img7));
-        spacecrafts.add(new Spacecraft("8",R.drawable.img8));
-        spacecrafts.add(new Spacecraft("9",R.drawable.img9));
-        spacecrafts.add(new Spacecraft("10",R.drawable.img10));
-        spacecrafts.add(new Spacecraft("11",R.drawable.img11));
-        spacecrafts.add(new Spacecraft("12",R.drawable.img12));
-        spacecrafts.add(new Spacecraft("13",R.drawable.img13));
-        spacecrafts.add(new Spacecraft("14",R.drawable.img14));
-        spacecrafts.add(new Spacecraft("15",R.drawable.img15));
-        spacecrafts.add(new Spacecraft("16",R.drawable.img16));
-        spacecrafts.add(new Spacecraft("17",R.drawable.img17));
-        spacecrafts.add(new Spacecraft("18",R.drawable.img18));
-        spacecrafts.add(new Spacecraft("19",R.drawable.img19));
-        spacecrafts.add(new Spacecraft("20",R.drawable.img20));
-        spacecrafts.add(new Spacecraft("21",R.drawable.img21));
-        spacecrafts.add(new Spacecraft("22",R.drawable.img22));
-        spacecrafts.add(new Spacecraft("23",R.drawable.img23));
-        spacecrafts.add(new Spacecraft("24",R.drawable.img24));
-        spacecrafts.add(new Spacecraft("25",R.drawable.img25));
-        spacecrafts.add(new Spacecraft("26",R.drawable.img26));
-        spacecrafts.add(new Spacecraft("27",R.drawable.img27));
-        spacecrafts.add(new Spacecraft("28",R.drawable.img28));
-        spacecrafts.add(new Spacecraft("29",R.drawable.img29));
+        initializeImageLocations();
 
+        first10Images();
 
         RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
-        RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this,spacecrafts);
+        myAdapter = new RecyclerViewAdapter(myrv,this,spacecrafts);
         myrv.setLayoutManager(new GridLayoutManager(this,2));
         myrv.setAdapter(myAdapter);
 
+        myAdapter.setLoadMore(new ILoadMore() {
+            @Override
+            public void onLoadMore() {
+                if(spacecrafts.size() < imageLoaction.size()){
+                    spacecrafts.add(null);
+                    myAdapter.notifyItemInserted(spacecrafts.size()-1);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            spacecrafts.remove(spacecrafts.size()-1);
+                            myAdapter.notifyItemRemoved(spacecrafts.size());
+
+                            //more data
+                            int index = spacecrafts.size();
+                            int end = index+10;
+                            for(int i=index;i<end;i++){
+                                spacecrafts.add(new Spacecraft(String.valueOf(i), imageLoaction.get(i)));
+                            }
+                            myAdapter.notifyDataSetChanged();
+                            myAdapter.setLoaded();
+                        }
+                    },1500);
+                }else{
+                    //Toast.makeText(MainActivity.this,"Loaded",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    private void initializeImageLocations() {
+        imageLoaction.add(R.drawable.img0);
+        imageLoaction.add(R.drawable.img1);
+        imageLoaction.add(R.drawable.img2);
+        imageLoaction.add(R.drawable.img3);
+        imageLoaction.add(R.drawable.img4);
+        imageLoaction.add(R.drawable.img5);
+        imageLoaction.add(R.drawable.img6);
+        imageLoaction.add(R.drawable.img7);
+        imageLoaction.add(R.drawable.img8);
+        imageLoaction.add(R.drawable.img9);
+        imageLoaction.add(R.drawable.img10);
+        imageLoaction.add(R.drawable.img11);
+        imageLoaction.add(R.drawable.img12);
+        imageLoaction.add(R.drawable.img13);
+        imageLoaction.add(R.drawable.img14);
+        imageLoaction.add(R.drawable.img15);
+        imageLoaction.add(R.drawable.img16);
+        imageLoaction.add(R.drawable.img17);
+        imageLoaction.add(R.drawable.img18);
+        imageLoaction.add(R.drawable.img19);
+        imageLoaction.add(R.drawable.img20);
+        imageLoaction.add(R.drawable.img21);
+        imageLoaction.add(R.drawable.img22);
+        imageLoaction.add(R.drawable.img23);
+        imageLoaction.add(R.drawable.img24);
+        imageLoaction.add(R.drawable.img25);
+        imageLoaction.add(R.drawable.img26);
+        imageLoaction.add(R.drawable.img27);
+        imageLoaction.add(R.drawable.img28);
+        imageLoaction.add(R.drawable.img29);
+    }
+
+    private void first10Images() {
+        for(int i=0;i<10;i++) {
+            spacecrafts.add(new Spacecraft(String.valueOf(i), imageLoaction.get(i)));
+        }
+    }
+
+    public int getScreenHeight(Context context)
+    {
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        DisplayMetrics metrics = new DisplayMetrics();
+        display.getMetrics(metrics);
+        int height = metrics.heightPixels;
+
+        return height;
+    }
+
+    public int getScreenWidth(Context context)
+    {
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        DisplayMetrics metrics = new DisplayMetrics();
+        display.getMetrics(metrics);
+        int width = metrics.widthPixels;
+
+        return width;
     }
 
     @Override
